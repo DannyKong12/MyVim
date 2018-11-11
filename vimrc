@@ -26,5 +26,7 @@ set t_Co=256
 colorscheme one
 set background=dark
 
+set encoding=utf-8
+
 autocmd vimenter * NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
