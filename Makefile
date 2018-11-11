@@ -5,4 +5,5 @@ all:
 	git clone https://github.com/vim-airline/vim-airline.git bundle/vim-airline
 	git clone https://github.com/DannyKong12/vim-airline-themes bundle/vim-airline-themes
 	git clone https://github.com/wakatime/vim-wakatime.git
+	rm -f ~/.vimrc
 	ln -s ~/.vim/vimrc ~/.vimrc
