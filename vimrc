@@ -12,6 +12,12 @@ call pathogen#helptags()
 
 set number
 
+set bs=2
+
+set expandtab
+set tabstop=2
+set softtabstop=2
+
 filetype plugin indent on
 syntax on
 runtime! config/**/*.vim
