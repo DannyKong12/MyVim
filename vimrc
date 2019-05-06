@@ -17,6 +17,8 @@ set bs=2
 set expandtab
 set tabstop=2
 set softtabstop=2
+set mouse=a
+inoremap kj <Esc>
 
 filetype plugin indent on
 syntax on
