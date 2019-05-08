@@ -30,3 +30,4 @@ parinfer-rust-build:
 
 clean:
 	rm -rf bundle/*
+	rm -r cookies
