@@ -1,14 +1,33 @@
-all:
-	rm ~/.vim/autoload/pathogen.vim
-	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-	git clone https://github.com/scrooloose/nerdtree.git bundle/nerdtree
-	git clone https://github.com/vim-airline/vim-airline.git bundle/vim-airline
-	git clone https://github.com/DannyKong12/vim-airline-themes bundle/vim-airline-themes
-	git clone https://github.com/wakatime/vim-wakatime.git bundle/vim-wakatime
-	git clone https://github.com/eraserhd/parinfer-rust bundle/parinfer-rust
-	cd ~/.vim/bundle/parinfer-rust && cargo build --release
+PACKAGES = scrooloose/nerdtree vim-airline/vim-airline dannykong12/vim-airline-themes eraserhd/parinfer-rust juliaeditorsupport/julia-vim terryma/vim-multiple-cursors
+PATHS = ${addprefix bundle/, ${notdir ${PACKAGES}}}
+
+.SECONDEXPANSION:
+
+vimrc: autoload/pathogen.vim ${PACKAGES} builds
 	rm -f ~/.vimrc
 	ln -s ~/.vim/vimrc ~/.vimrc
+	touch vimrc
+
+${PACKAGES}: bundle/$${notdir $$@}
+	echo $(notdir ${PACKAGES})
+	cd bundle/${notdir $@} && git remote add upstream https://github.com/$@
+	cd bundle/${notdir $@} && git pull upstream master
+	mkdir -p ${dir $@}
+	touch $@
+
+${PATHS}:
+	git clone https://github.com/dannykong12/${notdir $@} $@
+
+autoload/pathogen.vim:
+	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+builds: parinfer-rust-build
+
+parinfer-rust-build:
+	cd ~/.vim/bundle/parinfer-rust && cargo build --release
+	touch eraserhd/parinfer-rust
+
+.PHONY: clean all builds
 
 clean:
 	rm -rf bundle/*
