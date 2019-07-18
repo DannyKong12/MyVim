@@ -1,4 +1,4 @@
-PACKAGES = scrooloose/nerdtree vim-airline/vim-airline dannykong12/vim-airline-themes eraserhd/parinfer-rust juliaeditorsupport/julia-vim terryma/vim-multiple-cursors
+PACKAGES = scrooloose/nerdtree vim-airline/vim-airline dannykong12/vim-airline-themes eraserhd/parinfer-rust juliaeditorsupport/julia-vim terryma/vim-multiple-cursors plasticboy/vim-markdown w0rp/ale
 COOKIES = ${addprefix cookies/, ${PACKAGES}}
 PATHS = ${addprefix bundle/, ${notdir ${PACKAGES}}}
 
