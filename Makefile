@@ -20,12 +20,6 @@ ${PATHS}:
 autoload/pathogen.vim:
 	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-builds: parinfer-rust-build
-
-parinfer-rust-build:
-	cd ~/.vim/bundle/parinfer-rust && cargo build --release
-	touch cookies/eraserhd/parinfer-rust
-
 .PHONY: clean all builds
 
 clean:
